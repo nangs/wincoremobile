@@ -20,27 +20,27 @@ class AccountActivitiesRepository {
       print("tokennya : " + token);
       print("json : " + accountActivitiesRequest.toJson().toString());
 
-      var headers = {
-        'win_token': token.toString(),
-        'Content-Type': 'application/x-www-form-urlencoded'
-      };
+      // var headers = {
+      //   'win_token': token.toString(),
+      //   'Content-Type': 'application/x-www-form-urlencoded'
+      // };
 
-      var request = http.Request(
-          'POST',
-          Uri.parse(
-              'https://103.2.146.173:8443/mobileservice/AccountActivity'));
-      request.bodyFields = {'message': jsonEncode(accountActivitiesRequest)};
-      request.headers.addAll(headers);
+      // var request = http.Request(
+      //     'POST',
+      //     Uri.parse(
+      //         'https://103.2.146.173:8443/mobileservice/AccountActivity'));
+      // request.bodyFields = {'message': jsonEncode(accountActivitiesRequest)};
+      // request.headers.addAll(headers);
 
-      http.StreamedResponse response = await request.send();
+      // http.StreamedResponse response = await request.send();
 
-      if (response.statusCode == 200) {
-        print(await response.stream.bytesToString());
-      } else {
-        print(response.reasonPhrase);
-      }
+      // if (response.statusCode == 200) {
+      //   print(await response.stream.bytesToString());
+      // } else {
+      //   print(response.reasonPhrase);
+      // }
 
-      print('Finish');
+      // print('Finish');
       // final _response = await http.post(
       //     'https://103.2.146.173:8443/mobileservice/AccountActivity',
       //     body: "send this string via POST",

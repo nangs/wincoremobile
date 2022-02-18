@@ -1,0 +1,4 @@
+#Thu Feb 17 16:01:36 ICT 2022
+base.0=E\:\\Works\\flutterProject\\winmobile\\wincoremobile\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

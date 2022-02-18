@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "donjayamanne.githistory",
+        "jeroen-meijer.pubspec-assist",
+        "mohsen1.prettify-json",
+        "pkief.material-icon-theme",
+        "naco-siren.gradle-language",
+        "circlecodesolution.ccs-flutter-color",
+        "dart-code.flutter",
+        "dart-code.dart-code",
+        "coenraads.bracket-pair-colorizer",
+        "FelixAngelov.bloc"
+    ]
+}

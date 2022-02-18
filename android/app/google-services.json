@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "886763545249",
+    "project_id": "wincoremobile-c80dc",
+    "storage_bucket": "wincoremobile-c80dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886763545249:android:7fe18aa195eb77057146e0",
+        "android_client_info": {
+          "package_name": "com.wbk.wincoremobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886763545249-ngifu570k1ecc27qg7b6u2pt8ibbbj3h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wbk.wincoremobile",
+            "certificate_hash": "f6204220ddf9ec3054670de50fc5893f0d8b352c"
+          }
+        },
+        {
+          "client_id": "886763545249-c9pk8l843ioafb413t4o1ejh8ojq8ieu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4ASgrBiLLRO-Rfb5J0fTwoNHUBZZVPgs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "886763545249-c9pk8l843ioafb413t4o1ejh8ojq8ieu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,3 @@
-wincoremobile
-2.12
-file:///E:/Works/flutterProject/winmobile/wincoremobile/
-file:///E:/Works/flutterProject/winmobile/wincoremobile/lib/
 async
 2.12
 file:///E:/flutter2.8/.pub-cache/hosted/pub.dartlang.org/async-2.8.2/
@@ -274,4 +270,8 @@ flutter_web_plugins
 2.12
 file:///E:/flutter2.8/packages/flutter_web_plugins/
 file:///E:/flutter2.8/packages/flutter_web_plugins/lib/
+wincoremobile
+2.12
+file:///E:/winmob/wincoremobile/
+file:///E:/winmob/wincoremobile/lib/
 2

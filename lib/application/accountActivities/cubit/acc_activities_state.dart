@@ -16,3 +16,15 @@ class AccActivitiesSuccess extends AccActivitiesState {
   final AccountActivitiesResponse accActivitiesResponse;
   AccActivitiesSuccess(this.accActivitiesResponse);
 }
+
+class AccActivitiesPagingLoading extends AccActivitiesState {}
+
+class AccActivitiesPagingError extends AccActivitiesState {
+  final String errorMsg;
+  AccActivitiesPagingError(this.errorMsg);
+}
+
+class AccActivitiesPagingSuccess extends AccActivitiesState {
+  final AccountActivitiesResponse accActivitiesResponse;
+  AccActivitiesPagingSuccess(this.accActivitiesResponse);
+}

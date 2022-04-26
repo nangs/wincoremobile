@@ -24,10 +24,11 @@ class _ForgotPasswordStep1State extends State<ForgotPasswordStep1> {
       onPressed: null,
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
+        backgroundColor:
+            MaterialStateProperty.all<Color>(const Color(0xFF120A7C)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.0),
+            borderRadius: BorderRadius.circular(8),
           ),
         ),
       ),
@@ -53,14 +54,23 @@ class _ForgotPasswordStep1State extends State<ForgotPasswordStep1> {
       },
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
+        backgroundColor:
+            MaterialStateProperty.all<Color>(const Color(0xFF120A7C)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.0),
+            borderRadius: BorderRadius.circular(8),
           ),
         ),
       ),
-      child: const Padding(padding: EdgeInsets.all(14.0), child: Text("Kirim")),
+      child: const Padding(
+          padding: EdgeInsets.all(14.0),
+          child: Text(
+            "Kirim",
+            style: TextStyle(
+              fontFamily: "Montserrat",
+              fontWeight: FontWeight.bold,
+            ),
+          )),
     );
   }
 
@@ -68,7 +78,7 @@ class _ForgotPasswordStep1State extends State<ForgotPasswordStep1> {
   Widget build(BuildContext context) {
     return Scaffold(
         // resizeToAvoidBottomInset: false,
-        backgroundColor: const Color(0xFF120A7C),
+        backgroundColor: const Color(0xFFF2F2F4),
         body: BlocProvider(
           create: (context) => ForgotPasswordValidateCubit(),
           child: BlocConsumer<ForgotPasswordValidateCubit,
@@ -102,12 +112,20 @@ class _ForgotPasswordStep1State extends State<ForgotPasswordStep1> {
                   showDialog(
                     context: context,
                     builder: (context) => AlertDialog(
-                        title: const Text("Informasi"),
+                        title: const Text(
+                          "Informasi",
+                          style: TextStyle(fontFamily: "Montserrat"),
+                        ),
                         content: const Text(
-                            "Username atau Nomor Telepon yang kamu input salah"),
+                          "Username atau Nomor Telepon yang kamu input salah",
+                          style: TextStyle(fontFamily: "Montserrat"),
+                        ),
                         actions: <Widget>[
                           ElevatedButton(
-                            child: const Text('OK'),
+                            child: const Text(
+                              'OK',
+                              style: TextStyle(fontFamily: "Montserrat"),
+                            ),
                             onPressed: () {
                               Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
@@ -141,20 +159,20 @@ class _ForgotPasswordStep1State extends State<ForgotPasswordStep1> {
                         const SizedBox(
                           height: 18,
                         ),
-                        Container(
+                        SizedBox(
                           width: 150,
                           height: 150,
-                          decoration: BoxDecoration(
-                            color: Colors.deepPurple.shade50,
-                            shape: BoxShape.circle,
-                            boxShadow: const [
-                              BoxShadow(color: Colors.grey, spreadRadius: 3),
-                            ],
-                          ),
+                          // decoration: BoxDecoration(
+                          //   color: Colors.deepPurple.shade50,
+                          //   shape: BoxShape.circle,
+                          //   boxShadow: const [
+                          //     BoxShadow(color: Colors.grey, spreadRadius: 3),
+                          //   ],
+                          // ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(100),
                             child: Image.asset(
-                              'assets/images/illustration/illustration-4.png',
+                              'assets/images/icons-new/icon_password.png',
                             ),
                           ),
                         ),
@@ -166,7 +184,8 @@ class _ForgotPasswordStep1State extends State<ForgotPasswordStep1> {
                           style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                            color: Color(0xFF120A7C),
+                            fontFamily: "Montserrat",
                           ),
                         ),
                         const SizedBox(
@@ -176,8 +195,9 @@ class _ForgotPasswordStep1State extends State<ForgotPasswordStep1> {
                           "Masukkan nama pengguna anda, kami akan melakukan verifikasi data anda",
                           style: TextStyle(
                             fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white60,
+                            // fontWeight: FontWeight.bold,
+                            color: Color(0xFF120A7C),
+                            fontFamily: "Montserrat",
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -197,10 +217,16 @@ class _ForgotPasswordStep1State extends State<ForgotPasswordStep1> {
                                 keyboardType: TextInputType.text,
                                 style: const TextStyle(
                                   fontSize: 18,
-                                  fontWeight: FontWeight.bold,
+                                  // fontWeight: FontWeight.bold,
+                                  fontFamily: "Montserrat",
+                                  color: Color(0xFF120A7C),
                                 ),
                                 decoration: InputDecoration(
                                   labelText: 'Nama Pengguna',
+                                  labelStyle: const TextStyle(
+                                    fontFamily: "Montserrat",
+                                    color: Color(0xFF120A7C),
+                                  ),
                                   enabledBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
                                           color: Colors.black12),
@@ -215,7 +241,7 @@ class _ForgotPasswordStep1State extends State<ForgotPasswordStep1> {
                                 height: 20,
                               ),
                               SizedBox(
-                                width: double.infinity,
+                                width: MediaQuery.of(context).size.width / 2,
                                 child: (state is ForgotPasswordLoadingState)
                                     ? loadingButton()
                                     : verifyButton(context),

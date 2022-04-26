@@ -4,35 +4,77 @@ import 'package:flutter/material.dart';
 
 void alertLoginError(BuildContext context) {
   AlertDialog alert = AlertDialog(
-    title: const Text("Informasi"),
+    title: const Text(
+      "Informasi",
+      style: TextStyle(
+        fontFamily: "Montserrat",
+      ),
+    ),
     content: Container(
-      child: const Text("Username atau Password salah"),
+      child: const Text(
+        "Username atau Password salah",
+        style: TextStyle(
+          fontFamily: "Montserrat",
+        ),
+      ),
     ),
     actions: [
       TextButton(
-        child: const Text("OK"),
-        onPressed: () => Navigator.of(context).pop(),
+        child: const Text(
+          "OK",
+          style: TextStyle(
+            fontFamily: "Montserrat",
+          ),
+        ),
+        onPressed: () =>
+            Navigator.of(context, rootNavigator: true).pop(context),
       ),
     ],
   );
 
-  showDialog(context: context, builder: (context) => alert);
+  showDialog(
+    context: context,
+    builder: (context) => alert,
+    useRootNavigator: true,
+    useSafeArea: true,
+  );
 }
 
 void AlertMessage(
     String Title, String Message, String ButtonMessage, BuildContext context) {
   AlertDialog alert = AlertDialog(
-    title: Text(Title),
+    title: Text(
+      Title,
+      style: const TextStyle(
+        fontFamily: "Montserrat",
+      ),
+    ),
     content: Container(
-      child: Text(Message),
+      child: Text(
+        Message,
+        style: const TextStyle(
+          fontFamily: "Montserrat",
+        ),
+      ),
     ),
     actions: [
       TextButton(
-        child: Text(ButtonMessage),
-        onPressed: () => Navigator.of(context).pop(),
+        child: Text(
+          ButtonMessage,
+          style: const TextStyle(
+            fontFamily: "Montserrat",
+          ),
+        ),
+        onPressed: () =>
+            Navigator.of(context, rootNavigator: true).pop(context),
       ),
     ],
   );
 
-  showDialog(context: context, builder: (context) => alert);
+  showDialog(
+    context: context,
+    builder: (context) => alert,
+    useRootNavigator: true,
+    useSafeArea: true,
+  );
 }

@@ -1,3 +1,4 @@
+// ignore_for_file: file_names, prefer_collection_literals, unnecessary_new, unnecessary_this
 class AccountActivitiesResponse {
   final String? status;
   final Info? info;

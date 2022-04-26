@@ -4,8 +4,7 @@ import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 // import 'package:get_storage/get_storage.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'screen/animate/splashscreen.dart';
+import 'package:wincoremobile/component/no_internet_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,9 +32,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Wincore Mobiles',
       theme: ThemeData(
-          primarySwatch: Colors.blue,
-          fontFamily: GoogleFonts.nunito().fontFamily),
-      home: const SplashScreen(),
+        primarySwatch: Colors.blue,
+        fontFamily: "Montserrat",
+      ),
+      home: const NoInternetWidget(),
     );
   }
 }

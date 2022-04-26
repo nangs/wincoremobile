@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:wincoremobile/domain/model/accountInformation/accInformation_request.dart';
 import 'package:wincoremobile/domain/model/accountInformation/accInformation_response.dart';
+import 'package:wincoremobile/api/api_rest.dart';
 
 class AccountBalanceRepository {
   final Dio _dio = Dio();
@@ -27,7 +28,7 @@ class AccountBalanceRepository {
       print("json : " + accountInfoRequest.toJson().toString());
 
       _response = await _dio.post(
-        "https://103.2.146.173:8443/mobileservice/AccountInfo",
+        ApiRest.accountBalance().toString(),
         data:
             jsonDecode(jsonEncode({"message": jsonEncode(accountInfoRequest)})),
         options: Options(
@@ -36,6 +37,17 @@ class AccountBalanceRepository {
           headers: {'win_token': token.toString()},
         ),
       );
+      // Public IP
+      // _response = await _dio.post(
+      //   "https://103.2.146.173:8443/mobileservice/AccountInfo",
+      //   data:
+      //       jsonDecode(jsonEncode({"message": jsonEncode(accountInfoRequest)})),
+      //   options: Options(
+      //     contentType: Headers.formUrlEncodedContentType,
+      //     method: 'POST',
+      //     headers: {'win_token': token.toString()},
+      //   ),
+      // );
 
       AccountInfoResponse authResponse =
           AccountInfoResponse.fromJson(_response.data);

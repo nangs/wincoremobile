@@ -30,8 +30,8 @@ class AccountActivitiesRequest {
     data['username'] = this.username;
     data['accountno'] = this.accountno;
     data['mpin'] = this.mpin;
-    data['startdate'] = this.startdate?.replaceAll('/', '');
-    data['enddate'] = this.enddate?.replaceAll('/', '');
+    data['startdate'] = this.startdate;
+    data['enddate'] = this.enddate;
     data['sequenceno'] = this.sequenceno;
     return data;
   }

@@ -31,10 +31,11 @@ class _ForgotPasswordVerificationState
       onPressed: null,
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
+        backgroundColor:
+            MaterialStateProperty.all<Color>(const Color(0xFF120A7C)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.0),
+            borderRadius: BorderRadius.circular(8),
           ),
         ),
       ),
@@ -64,16 +65,23 @@ class _ForgotPasswordVerificationState
       },
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
+        backgroundColor:
+            MaterialStateProperty.all<Color>(const Color(0xFF120A7C)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.0),
+            borderRadius: BorderRadius.circular(8),
           ),
         ),
       ),
       child: const Padding(
         padding: EdgeInsets.all(14.0),
-        child: Text("Verifikasi Data"),
+        child: Text(
+          "Verifikasi Data",
+          style: TextStyle(
+            fontFamily: "Montserrat",
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }
@@ -115,7 +123,7 @@ class _ForgotPasswordVerificationState
   Widget build(BuildContext context) {
     return Scaffold(
         // resizeToAvoidBottomInset: false,
-        backgroundColor: const Color(0xFF120A7C),
+        backgroundColor: const Color(0xFFF2F2F4),
         body: BlocProvider(
           create: (context) => ForgotPasswordCubit(),
           child: BlocConsumer<ForgotPasswordCubit, ForgotPasswordState>(
@@ -139,11 +147,26 @@ class _ForgotPasswordVerificationState
                   showDialog(
                     context: context,
                     builder: (context) => AlertDialog(
-                        title: const Text("Informasi"),
-                        content: const Text("Data Nasabah Tidak Ditemukan."),
+                        title: const Text(
+                          "Informasi",
+                          style: TextStyle(
+                            fontFamily: "Montserrat",
+                          ),
+                        ),
+                        content: const Text(
+                          "Data Nasabah Tidak Ditemukan.",
+                          style: TextStyle(
+                            fontFamily: "Montserrat",
+                          ),
+                        ),
                         actions: <Widget>[
                           ElevatedButton(
-                            child: const Text('OK'),
+                            child: const Text(
+                              'OK',
+                              style: TextStyle(
+                                fontFamily: "Montserrat",
+                              ),
+                            ),
                             onPressed: () {
                               Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
@@ -177,20 +200,20 @@ class _ForgotPasswordVerificationState
                         const SizedBox(
                           height: 18,
                         ),
-                        Container(
+                        SizedBox(
                           width: 150,
                           height: 150,
-                          decoration: BoxDecoration(
-                            color: Colors.deepPurple.shade50,
-                            shape: BoxShape.circle,
-                            boxShadow: const [
-                              BoxShadow(color: Colors.grey, spreadRadius: 3),
-                            ],
-                          ),
+                          // decoration: BoxDecoration(
+                          //   color: Colors.deepPurple.shade50,
+                          //   shape: BoxShape.circle,
+                          //   boxShadow: const [
+                          //     BoxShadow(color: Colors.grey, spreadRadius: 3),
+                          //   ],
+                          // ),
                           child: ClipRRect(
                               borderRadius: BorderRadius.circular(100),
                               child: Image.asset(
-                                'assets/images/illustration/illustration-5.png',
+                                'assets/images/icons-new/icon_password.png',
                               )),
                         ),
                         const SizedBox(
@@ -201,7 +224,8 @@ class _ForgotPasswordVerificationState
                           style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                            color: Color(0xFF120A7C),
+                            fontFamily: "Montserrat",
                           ),
                         ),
                         const SizedBox(
@@ -211,8 +235,9 @@ class _ForgotPasswordVerificationState
                           "Masukkan data personal anda, kami akan melakukan verifikasi data anda",
                           style: TextStyle(
                             fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white60,
+                            // fontWeight: FontWeight.bold,
+                            color: Color(0xFF120A7C),
+                            fontFamily: "Montserrat",
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -236,9 +261,15 @@ class _ForgotPasswordVerificationState
                                 ],
                                 style: const TextStyle(
                                   fontSize: 18,
-                                  fontWeight: FontWeight.bold,
+                                  // fontWeight: FontWeight.bold,
+                                  color: Color(0xFF120A7C),
+                                  fontFamily: "Montserrat",
                                 ),
                                 decoration: InputDecoration(
+                                  labelStyle: const TextStyle(
+                                    fontFamily: "Montserrat",
+                                    color: Color(0xFF120A7C),
+                                  ),
                                   labelText: 'Nomor Rekening',
                                   enabledBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
@@ -257,16 +288,24 @@ class _ForgotPasswordVerificationState
                                 controller: _dobController,
                                 style: const TextStyle(
                                   fontSize: 18,
-                                  fontWeight: FontWeight.bold,
+                                  // fontWeight: FontWeight.bold,
+                                  color: Color(0xFF120A7C),
+                                  fontFamily: "Montserrat",
                                 ),
                                 decoration: InputDecoration(
                                   hintText: 'YYYY / MM / DD',
-                                  hintStyle:
-                                      const TextStyle(color: Colors.blueGrey),
+                                  hintStyle: const TextStyle(
+                                    color: Colors.blueGrey,
+                                    fontFamily: "Montserrat",
+                                  ),
                                   suffixIcon: IconButton(
                                     onPressed: _pickDateDialog,
-                                    color: Colors.blue,
+                                    color: Colors.grey,
                                     icon: const Icon(Icons.date_range),
+                                  ),
+                                  labelStyle: const TextStyle(
+                                    fontFamily: "Montserrat",
+                                    color: Color(0xFF120A7C),
                                   ),
                                   labelText: 'Tanggal Lahir',
                                   enabledBorder: OutlineInputBorder(
@@ -296,9 +335,15 @@ class _ForgotPasswordVerificationState
                                 keyboardType: TextInputType.number,
                                 style: const TextStyle(
                                   fontSize: 18,
-                                  fontWeight: FontWeight.bold,
+                                  // fontWeight: FontWeight.bold,
+                                  color: Color(0xFF120A7C),
+                                  fontFamily: "Montserrat",
                                 ),
                                 decoration: InputDecoration(
+                                  labelStyle: const TextStyle(
+                                    fontFamily: "Montserrat",
+                                    color: Color(0xFF120A7C),
+                                  ),
                                   labelText: 'Nomor Identitas',
                                   enabledBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
@@ -314,7 +359,7 @@ class _ForgotPasswordVerificationState
                                 height: 8,
                               ),
                               SizedBox(
-                                width: double.infinity,
+                                width: MediaQuery.of(context).size.width / 2,
                                 child: (state is ForgotPasswordLoadingState)
                                     ? loadingButton()
                                     : verifyButton(context),

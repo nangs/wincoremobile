@@ -6,7 +6,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:wincoremobile/domain/model/accountActivities/accActivities_request.dart';
 import 'package:wincoremobile/domain/model/accountActivities/accActivities_response.dart';
-import 'package:http/http.dart' as http;
+import 'package:wincoremobile/api/api_rest.dart';
 
 class AccountActivitiesRepository {
   final Dio _dio = Dio();
@@ -20,36 +20,8 @@ class AccountActivitiesRepository {
       print("tokennya : " + token);
       print("json : " + accountActivitiesRequest.toJson().toString());
 
-      // var headers = {
-      //   'win_token': token.toString(),
-      //   'Content-Type': 'application/x-www-form-urlencoded'
-      // };
-
-      // var request = http.Request(
-      //     'POST',
-      //     Uri.parse(
-      //         'https://103.2.146.173:8443/mobileservice/AccountActivity'));
-      // request.bodyFields = {'message': jsonEncode(accountActivitiesRequest)};
-      // request.headers.addAll(headers);
-
-      // http.StreamedResponse response = await request.send();
-
-      // if (response.statusCode == 200) {
-      //   print(await response.stream.bytesToString());
-      // } else {
-      //   print(response.reasonPhrase);
-      // }
-
-      // print('Finish');
-      // final _response = await http.post(
-      //     'https://103.2.146.173:8443/mobileservice/AccountActivity',
-      //     body: "send this string via POST",
-      //     headers: {
-      //       'win_token': token.toString(),
-      //     });
-
       _response = await _dio.post(
-        "https://103.2.146.173:8443/mobileservice/AccountActivity",
+        ApiRest.accountActivities().toString(),
         data: jsonDecode(
             jsonEncode({"message": jsonEncode(accountActivitiesRequest)})),
         options: Options(
@@ -59,12 +31,22 @@ class AccountActivitiesRepository {
         ),
       );
 
+      // public IP
+      // _response = await _dio.post(
+      //   "https://103.2.146.173:8443/mobileservice/AccountActivity",
+      //   data: jsonDecode(
+      //       jsonEncode({"message": jsonEncode(accountActivitiesRequest)})),
+      //   options: Options(
+      //     contentType: Headers.formUrlEncodedContentType,
+      //     method: 'POST',
+      //     headers: {'win_token': token.toString()},
+      //   ),
+      // );
+
       AccountActivitiesResponse accountActivitiesResponse =
           AccountActivitiesResponse.fromJson(_response.data);
-      Mutasi mutasi = Mutasi.fromJson(_response.data);
-      //print(_response);
+
       print(accountActivitiesResponse);
-      print(mutasi);
 
       //right itu untuk sukses
       return right(accountActivitiesResponse);

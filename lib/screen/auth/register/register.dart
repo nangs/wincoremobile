@@ -104,18 +104,23 @@ class _RegisterState extends State<Register> {
       },
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
+        backgroundColor:
+            MaterialStateProperty.all<Color>(const Color(0xFF120A7C)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.0),
+            borderRadius: BorderRadius.circular(10),
           ),
         ),
       ),
       child: const Padding(
-        padding: EdgeInsets.all(14.0),
+        padding: EdgeInsets.all(14),
         child: Text(
           'Kirim',
-          style: TextStyle(fontSize: 16),
+          style: TextStyle(
+            fontFamily: "Montserrat",
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
@@ -126,16 +131,19 @@ class _RegisterState extends State<Register> {
       onPressed: null,
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
+        backgroundColor:
+            MaterialStateProperty.all<Color>(const Color(0xFF120A7C)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.0),
+            borderRadius: BorderRadius.circular(10),
           ),
         ),
       ),
       child: const Padding(
         padding: EdgeInsets.all(14.0),
-        child: CircularProgressIndicator.adaptive(),
+        child: CircularProgressIndicator.adaptive(
+          backgroundColor: Colors.white,
+        ),
       ),
     );
   }
@@ -145,117 +153,134 @@ class _RegisterState extends State<Register> {
     return Scaffold(
       // resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xFF120A7C),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
+      floatingActionButton: FloatingActionButton(
+        elevation: 0,
+        onPressed: () {
+          Navigator.of(context).pop(context);
+        },
+        backgroundColor: const Color(0xFF120A7C),
+        child: const Icon(
+          Icons.arrow_back,
+          size: 30,
+        ),
+      ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 32),
-            child: Column(
-              children: [
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: const Icon(
-                      Icons.arrow_back,
-                      size: 32,
-                      color: Colors.grey,
+        child: Container(
+          constraints: const BoxConstraints.expand(),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/background.png"),
+              fit: BoxFit.fill,
+            ),
+          ),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 32),
+              child: Column(
+                children: [
+                  // const SizedBox(
+                  //   height: 18,
+                  // ),
+                  SizedBox(
+                    width: 120,
+                    height: 120,
+                    // decoration: BoxDecoration(
+                    //   color: Colors.deepPurple.shade50,
+                    //   shape: BoxShape.circle,
+                    // ),
+                    child: Image.asset(
+                      'assets/images/icons-new/icon_pendaftaran-05.png',
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 18,
-                ),
-                Container(
-                  width: 200,
-                  height: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.deepPurple.shade50,
-                    shape: BoxShape.circle,
+                  // const SizedBox(
+                  //   height: 24,
+                  // ),
+                  const Text(
+                    'Pendaftaran',
+                    style: TextStyle(
+                      fontFamily: "Montserrat",
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
-                  child: Image.asset(
-                    'assets/images/illustration/illustration-2.png',
+                  const SizedBox(
+                    height: 5,
                   ),
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-                const Text(
-                  'Pendaftaran',
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                  const Text(
+                    "Tambahkan nomor telepon Anda. Kami akan mengirimkan kode verifikasi agar kami tahu bahwa Anda asli.",
+                    style: TextStyle(
+                      fontFamily: "Montserrat",
+                      fontSize: 14,
+                      // fontWeight: FontWeight.w500,
+                      color: Colors.white70,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const Text(
-                  "Tambahkan nomor telepon Anda. Kami akan mengirimkan kode verifikasi agar kami tahu bahwa Anda asli.",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white60,
+                  const SizedBox(
+                    height: 20,
                   ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(
-                  height: 28,
-                ),
-                Container(
-                  padding: const EdgeInsets.all(28),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Column(
-                    children: [
-                      TextFormField(
-                        controller: _mobileNumberController,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.allow(RegExp('[0-9]'))
-                        ],
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        decoration: InputDecoration(
-                          labelText: 'Nomor Telepon',
-                          enabledBorder: OutlineInputBorder(
-                              borderSide:
-                                  const BorderSide(color: Colors.black12),
-                              borderRadius: BorderRadius.circular(10)),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  const BorderSide(color: Colors.black12),
-                              borderRadius: BorderRadius.circular(10)),
-                          prefix: const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 8),
-                            child: Text(
-                              '(+62)',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                  Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          controller: _mobileNumberController,
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(RegExp('[0-9]'))
+                          ],
+                          style: const TextStyle(
+                            fontFamily: "Montserrat",
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          decoration: InputDecoration(
+                            labelText: 'Nomor Telepon',
+                            labelStyle: const TextStyle(
+                              fontFamily: "Montserrat",
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    const BorderSide(color: Colors.black12),
+                                borderRadius: BorderRadius.circular(10)),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    const BorderSide(color: Colors.black12),
+                                borderRadius: BorderRadius.circular(10)),
+                            prefix: const Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 8),
+                              child: Text(
+                                '(+62)',
+                                style: TextStyle(
+                                  fontFamily: "Montserrat",
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 22,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        child:
-                            currentState == MobileVerificationState.sendOTPSTATE
-                                ? loadingOTPButton()
-                                : requestOTPButton(context),
-                      )
-                    ],
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width / 2,
+                          child: currentState ==
+                                  MobileVerificationState.sendOTPSTATE
+                              ? loadingOTPButton()
+                              : requestOTPButton(context),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

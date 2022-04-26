@@ -8,7 +8,6 @@ import 'package:wincoremobile/helper/alert_message.dart';
 import 'package:wincoremobile/screen/auth/forgot_password/forgot_password_step1.dart';
 import 'package:wincoremobile/screen/auth/register/register.dart';
 import 'package:wincoremobile/screen/panel/home/home.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -25,213 +24,255 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // resizeToAvoidBottomInset: false,
-      backgroundColor: const Color(0xff120A7C),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 32),
-          child: BlocProvider(
-            create: (context) => AuthCubit(),
-            child: BlocConsumer<AuthCubit, AuthState>(
-              listener: (context, state) {
-                if (state is AuthError) {
-                  print(state.errorMsg);
-                } else if (state is AuthLoading) {
-                  print("Now is Loading");
-                } else if (state is AuthLoginSuccess) {
-                  print(state.dataLogin);
-                  if (state.dataLogin.status == "LOGIN_OK") {
-                    var username = state.dataLogin.info?.accountName.toString();
-                    var noRek =
-                        state.dataLogin.info?.accountList?[0].toString();
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => Home(
-                          userid: _userController.text,
-                          username: username.toString(),
-                          no_rek: noRek.toString(),
-                        ),
-                      ),
-                    );
-                  } else {
-                    alertLoginError(context);
-                  }
-                }
-              },
-              builder: (context, state) {
-                return SafeArea(
-                  child: Padding(
-                    padding: EdgeInsets.all(14),
-                    child: Container(
-                      alignment: Alignment.topCenter,
-                      // margin: EdgeInsets.symmetric(horizontal: 50),
-                      // color: Color(0xffffffff),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              SizedBox(
-                                child: Image.asset(
-                                    'assets/images/WINCore copy.png'),
-                                // width: 200,
-                                // margin: EdgeInsets.symmetric(vertical: 30),
-                              ),
-                              SizedBox(
-                                height: 75,
-                              ),
-                              Text(
-                                "SIGN IN",
-                                style: TextStyle(
-                                  fontSize: 21,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.amber[50],
-                                ),
-                              ),
-                            ],
-                          ),
-                          TextFormField(
-                            controller: _userController,
-                            decoration: InputDecoration(
-                              // border: UnderlineInputBorder(),
-                              prefixIcon: Icon(
-                                Icons.person_outline,
-                                color: Colors.white,
-                              ),
-                              hintText: "Username",
-                              // iconColor: Colors.white,
-                              hintStyle: TextStyle(color: Colors.white),
-                            ),
-                            style: TextStyle(
-                              color: Colors.amber[50],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          TextFormField(
-                            controller: _passwordController,
-                            decoration: InputDecoration(
-                              // border: UnderlineInputBorder(),
-                              prefixIcon: Icon(
-                                Icons.lock_open,
-                                color: Colors.white,
-                              ),
-                              hintText: "Password",
-                              // iconColor: Colors.white,
-                              hintStyle: TextStyle(
-                                color: Colors.amber[50],
-                              ),
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                  _isObscure
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
-                                  color: Colors.white,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    _isObscure = !_isObscure;
-                                  });
-                                },
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Container(
+            constraints: BoxConstraints.expand(),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/images/background.png"),
+                  fit: BoxFit.cover),
+            ),
+            child: SingleChildScrollView(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 35, horizontal: 32),
+                child: BlocProvider(
+                  create: (context) => AuthCubit(),
+                  child: BlocConsumer<AuthCubit, AuthState>(
+                    listener: (context, state) {
+                      if (state is AuthError) {
+                        print(state.errorMsg);
+                      } else if (state is AuthLoading) {
+                        print("Now is Loading");
+                      } else if (state is AuthLoginSuccess) {
+                        print(state.dataLogin);
+                        if (state.dataLogin.status == "LOGIN_OK") {
+                          var username =
+                              state.dataLogin.info?.accountName.toString();
+                          var noRek =
+                              state.dataLogin.info?.accountList?[0].toString();
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) => Home(
+                                userid: _userController.text,
+                                username: username.toString(),
+                                no_rek: noRek.toString(),
+                                cust_no:
+                                    state.dataLogin.info!.custNo.toString(),
+                                lastLogin:
+                                    state.dataLogin.info!.lastLogin.toString(),
                               ),
                             ),
-                            style: TextStyle(
-                              color: Colors.amber[50],
-                            ),
-                            obscureText: _isObscure,
-                            enableSuggestions: false,
-                            autocorrect: false,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Container(
-                            width: 100,
-                            margin: EdgeInsets.only(top: 10),
-                            child: (state is AuthLoading)
-                                ? _flatLoadingButton()
-                                : _flatLoginButton(context),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 75),
+                          );
+                        } else {
+                          alertLoginError(context);
+                        }
+                      }
+                    },
+                    builder: (context, state) {
+                      return SafeArea(
+                        child: Padding(
+                          padding: EdgeInsets.all(14),
+                          child: Container(
+                            alignment: Alignment.topCenter,
+                            // margin: EdgeInsets.symmetric(horizontal: 50),
+                            // color: Color(0xffffffff),
                             child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
                                   children: [
-                                    InkWell(
-                                      child: Text(
-                                        "Forgot Password ?",
-                                        style: GoogleFonts.nunito(
-                                          textStyle: TextStyle(
-                                              color: Colors.blue[300]),
-                                        ),
-                                      ),
-                                      onTap: () {
-                                        Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ForgotPassword()));
-
-                                        // Navigator.of(context).push(MaterialPageRoute(
-                                        //     builder: (context) => Register()));
-                                      },
+                                    SizedBox(
+                                      child: Image.asset(
+                                          'assets/images/WINCore copy.png'),
+                                      height: 80,
+                                      width: 300,
+                                      // margin: EdgeInsets.symmetric(vertical: 30),
                                     ),
-                                  ],
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8),
-                                  child: Text(
-                                    "OR",
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
+                                    SizedBox(
+                                      height: 30,
+                                    ),
                                     Text(
-                                      "Don't have an account? ",
-                                      style: GoogleFonts.nunito(
-                                        textStyle: TextStyle(
-                                          color: Colors.amber[50],
-                                        ),
+                                      "SIGN IN",
+                                      style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 21,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
                                       ),
-                                    ),
-                                    InkWell(
-                                      child: Text(
-                                        "Register Here",
-                                        style: GoogleFonts.nunito(
-                                          textStyle: TextStyle(
-                                              color: Colors.blue[300]),
-                                        ),
-                                      ),
-                                      onTap: () {
-                                        Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    Register()));
-
-                                        // Navigator.of(context).push(MaterialPageRoute(
-                                        //     builder: (context) => Register()));
-                                      },
                                     ),
                                   ],
                                 ),
                                 SizedBox(
                                   height: 10,
                                 ),
+                                TextField(
+                                  //keyboardType: TextInputType.text,
+                                  controller: _userController,
+                                  style: TextStyle(
+                                    fontFamily: "Montserrat",
+                                    color: Colors.blue.shade900,
+                                  ),
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    hintText: "Username",
+                                    hintStyle: TextStyle(
+                                      fontFamily: "Montserrat",
+                                      color: Colors.blue.shade900,
+                                      //fontSize: 10
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(13.0),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                TextField(
+                                  //keyboardType: TextInputType.text,
+                                  controller: _passwordController,
+                                  style: TextStyle(
+                                    fontFamily: "Montserrat",
+                                    color: Colors.blue.shade900,
+                                  ),
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    hintText: "Password",
+                                    hintStyle: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        color: Colors.blue.shade900),
+                                    suffixIcon: IconButton(
+                                      icon: Icon(
+                                        _isObscure
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                        color: Colors.black87,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          _isObscure = !_isObscure;
+                                        });
+                                      },
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(10.0),
+                                      ),
+                                    ),
+                                  ),
+                                  obscureText: _isObscure,
+                                  enableSuggestions: false,
+                                  autocorrect: false,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 30),
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          InkWell(
+                                            child: Text(
+                                              "Forgot Password ?",
+                                              style: TextStyle(
+                                                fontFamily: "Montserrat",
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                                decoration:
+                                                    TextDecoration.underline,
+                                              ),
+                                            ),
+                                            onTap: () {
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          ForgotPassword()));
+
+                                              // Navigator.of(context).push(MaterialPageRoute(
+                                              //     builder: (context) => Register()));
+                                            },
+                                          ),
+                                        ],
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8),
+                                        child: Text(
+                                          "or",
+                                          style: TextStyle(
+                                              fontFamily: "Montserrat",
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            "Don't have an account? ",
+                                            style: TextStyle(
+                                              fontFamily: "Montserrat",
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          InkWell(
+                                            child: Text(
+                                              "Register Here",
+                                              style: TextStyle(
+                                                fontFamily: "Montserrat",
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                                decoration:
+                                                    TextDecoration.underline,
+                                              ),
+                                            ),
+                                            onTap: () {
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          Register()));
+
+                                              // Navigator.of(context).push(MaterialPageRoute(
+                                              //     builder: (context) => Register()));
+                                            },
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 40,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 40,
+                                ),
+                                Container(
+                                  width: 160,
+                                  height: 50,
+                                  margin: EdgeInsets.only(top: 50),
+                                  child: (state is AuthLoading)
+                                      ? _flatLoadingButton()
+                                      : _flatLoginButton(context),
+                                ),
                               ],
                             ),
-                          )
-                        ],
-                      ),
-                    ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
+                ),
+              ),
             ),
           ),
         ),
@@ -245,10 +286,11 @@ class _SignInState extends State<SignIn> {
         padding: EdgeInsets.all(3.0),
         child: Text(
           "LOGIN",
-          style: GoogleFonts.nunito(
-            textStyle: TextStyle(
-              color: Colors.white,
-            ),
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+            fontFamily: "Montserrat",
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
@@ -265,10 +307,10 @@ class _SignInState extends State<SignIn> {
       },
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
+        backgroundColor: MaterialStateProperty.all<Color>(Colors.blue.shade900),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.0),
+            borderRadius: BorderRadius.circular(13.0),
           ),
         ),
       ),
@@ -286,10 +328,10 @@ class _SignInState extends State<SignIn> {
       ),
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
+        backgroundColor: MaterialStateProperty.all<Color>(Colors.blue.shade900),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.0),
+            borderRadius: BorderRadius.circular(13.0),
           ),
         ),
       ),

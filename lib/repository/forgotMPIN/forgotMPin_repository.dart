@@ -6,6 +6,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:wincoremobile/domain/model/forgotMPin/forgotMPin_request.dart';
 import 'package:wincoremobile/domain/model/forgotMPin/forgotMPin_response.dart';
+import 'package:wincoremobile/api/api_rest.dart';
 
 class ForgotMPinRepository {
   final Dio _dio = Dio();
@@ -21,7 +22,7 @@ class ForgotMPinRepository {
       print("json : " + forgotMPinRequest.toJson().toString());
 
       _response = await _dio.post(
-        "https://103.2.146.173:8443/mobileservice/ForgotPIN",
+        ApiRest.forgotMPIN().toString(),
         data:
             jsonDecode(jsonEncode({"message": jsonEncode(forgotMPinRequest)})),
         options: Options(
@@ -30,6 +31,18 @@ class ForgotMPinRepository {
           headers: {'win_token': token.toString()},
         ),
       );
+
+      // Public IP
+      // _response = await _dio.post(
+      //   "https://103.2.146.173:8443/mobileservice/ForgotPIN",
+      //   data:
+      //       jsonDecode(jsonEncode({"message": jsonEncode(forgotMPinRequest)})),
+      //   options: Options(
+      //     contentType: Headers.formUrlEncodedContentType,
+      //     method: 'POST',
+      //     headers: {'win_token': token.toString()},
+      //   ),
+      // );
 
       ForgotMPinResponse authResponse =
           ForgotMPinResponse.fromJson(_response.data);

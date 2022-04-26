@@ -38,7 +38,7 @@ class _OTPState extends State<OTP> {
   Widget build(BuildContext context) {
     return Scaffold(
       // resizeToAvoidBottomInset: false,
-      backgroundColor: const Color(0xFF120A7C),
+      backgroundColor: const Color(0xFFF2F2F4),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -59,15 +59,11 @@ class _OTPState extends State<OTP> {
                 const SizedBox(
                   height: 18,
                 ),
-                Container(
+                SizedBox(
                   width: 200,
                   height: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.deepPurple.shade50,
-                    shape: BoxShape.circle,
-                  ),
                   child: Image.asset(
-                    'assets/images/illustration/illustration-3.png',
+                    'assets/images/icons-new/icon_verifikasi.png',
                   ),
                 ),
                 const SizedBox(
@@ -76,9 +72,10 @@ class _OTPState extends State<OTP> {
                 const Text(
                   'Verifikasi',
                   style: TextStyle(
+                    fontFamily: "Montserrat",
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Color(0xFF120A7C),
                   ),
                 ),
                 const SizedBox(
@@ -87,9 +84,10 @@ class _OTPState extends State<OTP> {
                 const Text(
                   "Masukan kode OTP yang anda terima.",
                   style: TextStyle(
+                    fontFamily: "Montserrat",
                     fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white54,
+                    fontWeight: FontWeight.normal,
+                    color: Color(0xFF120A7C),
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -100,7 +98,7 @@ class _OTPState extends State<OTP> {
                   padding: const EdgeInsets.all(28),
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(8),
                   ),
                   child: Column(
                     children: [
@@ -108,7 +106,7 @@ class _OTPState extends State<OTP> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           SizedBox(
-                            height: 40,
+                            height: 48,
                             child: AspectRatio(
                               aspectRatio: 1.0,
                               child: TextField(
@@ -126,6 +124,7 @@ class _OTPState extends State<OTP> {
                                 readOnly: false,
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
+                                  fontFamily: "Montserrat",
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -140,14 +139,14 @@ class _OTPState extends State<OTP> {
                                       borderRadius: BorderRadius.circular(12)),
                                   focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
-                                          width: 2, color: Colors.purple),
+                                          width: 2, color: Colors.blue),
                                       borderRadius: BorderRadius.circular(12)),
                                 ),
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 40,
+                            height: 48,
                             child: AspectRatio(
                               aspectRatio: 1.0,
                               child: TextField(
@@ -165,6 +164,7 @@ class _OTPState extends State<OTP> {
                                 readOnly: false,
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
+                                  fontFamily: "Montserrat",
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -179,14 +179,14 @@ class _OTPState extends State<OTP> {
                                       borderRadius: BorderRadius.circular(12)),
                                   focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
-                                          width: 2, color: Colors.purple),
+                                          width: 2, color: Colors.blue),
                                       borderRadius: BorderRadius.circular(12)),
                                 ),
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 40,
+                            height: 48,
                             child: AspectRatio(
                               aspectRatio: 1.0,
                               child: TextField(
@@ -204,6 +204,7 @@ class _OTPState extends State<OTP> {
                                 readOnly: false,
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
+                                  fontFamily: "Montserrat",
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -218,14 +219,14 @@ class _OTPState extends State<OTP> {
                                       borderRadius: BorderRadius.circular(12)),
                                   focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
-                                          width: 2, color: Colors.purple),
+                                          width: 2, color: Colors.blue),
                                       borderRadius: BorderRadius.circular(12)),
                                 ),
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 40,
+                            height: 48,
                             child: AspectRatio(
                               aspectRatio: 1.0,
                               child: TextField(
@@ -243,6 +244,7 @@ class _OTPState extends State<OTP> {
                                 readOnly: false,
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
+                                  fontFamily: "Montserrat",
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -257,14 +259,14 @@ class _OTPState extends State<OTP> {
                                       borderRadius: BorderRadius.circular(12)),
                                   focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
-                                          width: 2, color: Colors.purple),
+                                          width: 2, color: Colors.blue),
                                       borderRadius: BorderRadius.circular(12)),
                                 ),
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 40,
+                            height: 48,
                             child: AspectRatio(
                               aspectRatio: 1.0,
                               child: TextField(
@@ -282,6 +284,7 @@ class _OTPState extends State<OTP> {
                                 readOnly: false,
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
+                                  fontFamily: "Montserrat",
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -296,14 +299,14 @@ class _OTPState extends State<OTP> {
                                       borderRadius: BorderRadius.circular(12)),
                                   focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
-                                          width: 2, color: Colors.purple),
+                                          width: 2, color: Colors.blue),
                                       borderRadius: BorderRadius.circular(12)),
                                 ),
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 40,
+                            height: 48,
                             child: AspectRatio(
                               aspectRatio: 1.0,
                               child: TextField(
@@ -321,6 +324,7 @@ class _OTPState extends State<OTP> {
                                 readOnly: false,
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
+                                  fontFamily: "Montserrat",
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -335,7 +339,7 @@ class _OTPState extends State<OTP> {
                                       borderRadius: BorderRadius.circular(12)),
                                   focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
-                                          width: 2, color: Colors.purple),
+                                          width: 2, color: Colors.blue),
                                       borderRadius: BorderRadius.circular(12)),
                                 ),
                               ),
@@ -347,7 +351,7 @@ class _OTPState extends State<OTP> {
                         height: 22,
                       ),
                       SizedBox(
-                        width: double.infinity,
+                        width: MediaQuery.of(context).size.width / 1.7,
                         child: ElevatedButton(
                           onPressed: () {
                             otpNumber = _textBoxOTP1Controller.text +
@@ -366,12 +370,13 @@ class _OTPState extends State<OTP> {
                           style: ButtonStyle(
                             foregroundColor:
                                 MaterialStateProperty.all<Color>(Colors.white),
-                            backgroundColor:
-                                MaterialStateProperty.all<Color>(Colors.blue),
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                              const Color(0xFF120A7C),
+                            ),
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(
                               RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(24.0),
+                                borderRadius: BorderRadius.circular(8),
                               ),
                             ),
                           ),
@@ -379,7 +384,11 @@ class _OTPState extends State<OTP> {
                             padding: EdgeInsets.all(14.0),
                             child: Text(
                               'Verifikasi',
-                              style: TextStyle(fontSize: 16),
+                              style: TextStyle(
+                                fontFamily: "Montserrat",
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
@@ -393,6 +402,7 @@ class _OTPState extends State<OTP> {
                 // const Text(
                 //   "Didn't you receive any code?",
                 //   style: TextStyle(
+                //     fontFamily: "Montserrat",
                 //     fontSize: 14,
                 //     fontWeight: FontWeight.bold,
                 //     color: Colors.white54,
@@ -405,6 +415,7 @@ class _OTPState extends State<OTP> {
                 // const Text(
                 //   "Resend New Code",
                 //   style: TextStyle(
+                //     fontFamily: "Montserrat",
                 //     fontSize: 18,
                 //     fontWeight: FontWeight.bold,
                 //     color: Colors.blue,

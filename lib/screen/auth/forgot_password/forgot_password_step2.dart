@@ -23,7 +23,7 @@ class _ForgotPasswordStep2State extends State<ForgotPasswordStep2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff120A7C),
+      backgroundColor: const Color(0xFFF2F2F4),
       body: BlocProvider(
         create: (context) => ForgotPasswordNewPassCubit(),
         child: BlocConsumer<ForgotPasswordNewPassCubit,
@@ -39,11 +39,20 @@ class _ForgotPasswordStep2State extends State<ForgotPasswordStep2> {
                 showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
-                      title: Text("Hi, " + widget.username),
-                      content: const Text("Passwordmu berhasil diperbaharui !"),
+                      title: Text(
+                        "Hi, " + widget.username,
+                        style: const TextStyle(fontFamily: "Montserrat"),
+                      ),
+                      content: const Text(
+                        "Passwordmu berhasil diperbaharui !",
+                        style: TextStyle(fontFamily: "Montserrat"),
+                      ),
                       actions: <Widget>[
                         ElevatedButton(
-                          child: const Text('OK'),
+                          child: const Text(
+                            'OK',
+                            style: TextStyle(fontFamily: "Montserrat"),
+                          ),
                           onPressed: () {
                             Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
@@ -56,11 +65,20 @@ class _ForgotPasswordStep2State extends State<ForgotPasswordStep2> {
                 showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
-                      title: const Text("Informasi"),
-                      content: const Text("Data Nasabah Tidak Ditemukan."),
+                      title: const Text(
+                        "Informasi",
+                        style: TextStyle(fontFamily: "Montserrat"),
+                      ),
+                      content: const Text(
+                        "Data Nasabah Tidak Ditemukan.",
+                        style: TextStyle(fontFamily: "Montserrat"),
+                      ),
                       actions: <Widget>[
                         ElevatedButton(
-                          child: const Text('OK'),
+                          child: const Text(
+                            'OK',
+                            style: TextStyle(fontFamily: "Montserrat"),
+                          ),
                           onPressed: () {
                             Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
@@ -91,18 +109,18 @@ class _ForgotPasswordStep2State extends State<ForgotPasswordStep2> {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 18,
-                      ),
-                      Container(
+                      // const SizedBox(
+                      //   height: 18,
+                      // ),
+                      SizedBox(
                         width: 200,
                         height: 200,
-                        decoration: BoxDecoration(
-                          color: Colors.deepPurple.shade50,
-                          shape: BoxShape.circle,
-                        ),
+                        // decoration: BoxDecoration(
+                        //   color: Colors.deepPurple.shade50,
+                        //   shape: BoxShape.circle,
+                        // ),
                         child: Image.asset(
-                          'assets/images/illustration/illustration-2.png',
+                          'assets/images/icons-new/icon_password.png',
                         ),
                       ),
                       const SizedBox(
@@ -113,20 +131,25 @@ class _ForgotPasswordStep2State extends State<ForgotPasswordStep2> {
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: Color(0xff120A7C),
+                          fontFamily: "Montserrat",
                         ),
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      const Text(
-                        "Asikk.. Sekarang kamu dapat mengakses kembali akunmu dengan Kata Sandi yang baru.",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white60,
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          "Hore!! Sekarang kamu dapat mengakses kembali akunmu dengan Kata Sandi yang baru.",
+                          style: TextStyle(
+                            fontSize: 14,
+                            // fontWeight: FontWeight.bold,
+                            color: Color(0xff120A7C),
+                            fontFamily: "Montserrat",
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                       const SizedBox(
                         height: 28,
@@ -144,10 +167,16 @@ class _ForgotPasswordStep2State extends State<ForgotPasswordStep2> {
                               keyboardType: TextInputType.text,
                               style: const TextStyle(
                                 fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                                // fontWeight: FontWeight.bold,
+                                fontFamily: "Montserrat",
+                                color: Color(0xff120A7C),
                               ),
                               decoration: InputDecoration(
                                 labelText: 'Kata Sandi Baru',
+                                labelStyle: const TextStyle(
+                                  color: Color(0xff120A7C),
+                                  fontFamily: "Montserrat",
+                                ),
                                 enabledBorder: OutlineInputBorder(
                                     borderSide:
                                         const BorderSide(color: Colors.black12),
@@ -166,10 +195,16 @@ class _ForgotPasswordStep2State extends State<ForgotPasswordStep2> {
                               keyboardType: TextInputType.text,
                               style: const TextStyle(
                                 fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                                // fontWeight: FontWeight.bold,
+                                fontFamily: "Montserrat",
+                                color: Color(0xff120A7C),
                               ),
                               decoration: InputDecoration(
                                 labelText: 'Ketik Ulang Kata Sandi Baru',
+                                labelStyle: const TextStyle(
+                                  fontFamily: "Montserrat",
+                                  color: Color(0xff120A7C),
+                                ),
                                 enabledBorder: OutlineInputBorder(
                                     borderSide:
                                         const BorderSide(color: Colors.black12),
@@ -184,10 +219,13 @@ class _ForgotPasswordStep2State extends State<ForgotPasswordStep2> {
                               height: 15,
                             ),
                             SizedBox(
-                              width: double.infinity,
-                              child: (state is ForgotPasswordLoadingState)
-                                  ? _flatLoadingButton()
-                                  : _flatChangePasswordButton(context),
+                              width: MediaQuery.of(context).size.width / 2,
+                              child: (_passwordController.text ==
+                                      _passwordRetypeController.text)
+                                  ? ((state is ForgotPasswordLoadingState)
+                                      ? _flatLoadingButton()
+                                      : _flatChangePasswordButton(context))
+                                  : _flatDisabledChangePasswordButton(context),
                             )
                           ],
                         ),
@@ -203,6 +241,32 @@ class _ForgotPasswordStep2State extends State<ForgotPasswordStep2> {
     );
   }
 
+  ElevatedButton _flatDisabledChangePasswordButton(BuildContext context) {
+    return ElevatedButton(
+      child: const Padding(
+        padding: EdgeInsets.all(3.0),
+        child: Text(
+          "Submit",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontFamily: "Montserrat",
+          ),
+        ),
+      ),
+      onPressed: null,
+      style: ButtonStyle(
+        foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+        backgroundColor: MaterialStateProperty.all<Color>(Colors.grey),
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+      ),
+    );
+  }
+
   ElevatedButton _flatChangePasswordButton(BuildContext context) {
     return ElevatedButton(
       child: const Padding(
@@ -211,6 +275,8 @@ class _ForgotPasswordStep2State extends State<ForgotPasswordStep2> {
           "Submit",
           style: TextStyle(
             color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontFamily: "Montserrat",
           ),
         ),
       ),
@@ -227,10 +293,11 @@ class _ForgotPasswordStep2State extends State<ForgotPasswordStep2> {
       },
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
+        backgroundColor:
+            MaterialStateProperty.all<Color>(const Color(0xff120A7C)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.0),
+            borderRadius: BorderRadius.circular(8),
           ),
         ),
       ),
@@ -248,10 +315,11 @@ class _ForgotPasswordStep2State extends State<ForgotPasswordStep2> {
       ),
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
+        backgroundColor:
+            MaterialStateProperty.all<Color>(const Color(0xff120A7C)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.0),
+            borderRadius: BorderRadius.circular(8),
           ),
         ),
       ),

@@ -6,6 +6,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:wincoremobile/domain/model/forgotPassword/forgotPassword_response.dart';
 import 'package:wincoremobile/domain/model/forgotPassword/forgotPassword_request.dart';
+import 'package:wincoremobile/api/api_rest.dart';
 
 class ForgotPasswordRepository {
   final Dio _dio = Dio();
@@ -24,7 +25,7 @@ class ForgotPasswordRepository {
           forgotPasswordVerificationDataRequest.toJson().toString());
 
       _response = await _dio.post(
-        "https://103.2.146.173:8443/mobileservice/ForgotPass",
+        ApiRest.forgotPassword().toString(),
         data: jsonDecode(jsonEncode(
             {"message": jsonEncode(forgotPasswordVerificationDataRequest)})),
         options: Options(
@@ -33,6 +34,18 @@ class ForgotPasswordRepository {
           headers: {'win_token': token.toString()},
         ),
       );
+
+      // Public IP
+      // _response = await _dio.post(
+      //   "https://103.2.146.173:8443/mobileservice/ForgotPass",
+      //   data: jsonDecode(jsonEncode(
+      //       {"message": jsonEncode(forgotPasswordVerificationDataRequest)})),
+      //   options: Options(
+      //     contentType: Headers.formUrlEncodedContentType,
+      //     method: 'POST',
+      //     headers: {'win_token': token.toString()},
+      //   ),
+      // );
 
       ForgotPasswordResponse forgotPasswordResponse =
           ForgotPasswordResponse.fromJson(_response.data);
@@ -94,7 +107,7 @@ class ForgotPasswordRepository {
       print("json : " + forgotPasswordValidateRequest.toJson().toString());
 
       _response = await _dio.post(
-        "https://103.2.146.173:8443/mobileservice/ForgotPass",
+        "https://10.16.31.128:8443/mobileservice/ForgotPass",
         data: jsonDecode(
             jsonEncode({"message": jsonEncode(forgotPasswordValidateRequest)})),
         options: Options(
@@ -103,6 +116,18 @@ class ForgotPasswordRepository {
           headers: {'win_token': token.toString()},
         ),
       );
+
+      // Public IP
+      // _response = await _dio.post(
+      //   "https://103.2.146.173:8443/mobileservice/ForgotPass",
+      //   data: jsonDecode(
+      //       jsonEncode({"message": jsonEncode(forgotPasswordValidateRequest)})),
+      //   options: Options(
+      //     contentType: Headers.formUrlEncodedContentType,
+      //     method: 'POST',
+      //     headers: {'win_token': token.toString()},
+      //   ),
+      // );
 
       ForgotPasswordResponse forgotPasswordResponse =
           ForgotPasswordResponse.fromJson(_response.data);
@@ -164,7 +189,7 @@ class ForgotPasswordRepository {
       print("json : " + forgotPasswordSetNewPassRequest.toJson().toString());
 
       _response = await _dio.post(
-        "https://103.2.146.173:8443/mobileservice/ForgotPass",
+        "https://10.16.31.128:8443/mobileservice/ForgotPass",
         data: jsonDecode(jsonEncode(
             {"message": jsonEncode(forgotPasswordSetNewPassRequest)})),
         options: Options(
@@ -173,6 +198,18 @@ class ForgotPasswordRepository {
           headers: {'win_token': token.toString()},
         ),
       );
+
+      // Public IP
+      // _response = await _dio.post(
+      //   "https://103.2.146.173:8443/mobileservice/ForgotPass",
+      //   data: jsonDecode(jsonEncode(
+      //       {"message": jsonEncode(forgotPasswordSetNewPassRequest)})),
+      //   options: Options(
+      //     contentType: Headers.formUrlEncodedContentType,
+      //     method: 'POST',
+      //     headers: {'win_token': token.toString()},
+      //   ),
+      // );
 
       ForgotPasswordResponse forgotPasswordResponse =
           ForgotPasswordResponse.fromJson(_response.data);

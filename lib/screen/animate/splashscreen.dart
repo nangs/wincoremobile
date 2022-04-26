@@ -25,6 +25,7 @@ class SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      // backgroundColor: const Color(0xff120A7C),
       body: SafeArea(
         child: Container(
             width: MediaQuery.of(context).size.width,

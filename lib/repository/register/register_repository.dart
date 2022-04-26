@@ -11,6 +11,7 @@ import 'package:wincoremobile/domain/model/register/register_response.dart';
 // import 'package:wincoremobile/domain/model/token_response.dart';
 // import 'package:wincoremobile/repository/token_repository.dart';
 // import 'package:flutter/foundation.dart';
+import 'package:wincoremobile/api/api_rest.dart';
 
 class RegisterRepository {
   final Dio _dio = Dio();
@@ -54,7 +55,7 @@ class RegisterRepository {
       print("json : " + registerRequest.toJson().toString());
 
       _response = await _dio.post(
-        "https://103.2.146.173:8443/mobileservice/Register",
+        ApiRest.register().toString(),
         data: jsonDecode(jsonEncode({"message": jsonEncode(registerRequest)})),
         options: Options(
           contentType: Headers.formUrlEncodedContentType,
@@ -62,6 +63,17 @@ class RegisterRepository {
           headers: {'win_token': token.toString()},
         ),
       );
+
+      // Public IP
+      // _response = await _dio.post(
+      //   "https://103.2.146.173:8443/mobileservice/Register",
+      //   data: jsonDecode(jsonEncode({"message": jsonEncode(registerRequest)})),
+      //   options: Options(
+      //     contentType: Headers.formUrlEncodedContentType,
+      //     method: 'POST',
+      //     headers: {'win_token': token.toString()},
+      //   ),
+      // );
 
       RegisterResponse registerResponse =
           RegisterResponse.fromJson(_response.data);

@@ -105,10 +105,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       },
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
+        backgroundColor:
+            MaterialStateProperty.all<Color>(const Color(0xFF120A7C)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.0),
+            borderRadius: BorderRadius.circular(8),
           ),
         ),
       ),
@@ -116,7 +117,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         padding: EdgeInsets.all(14.0),
         child: Text(
           'Kirim',
-          style: TextStyle(fontSize: 16),
+          style: TextStyle(
+            fontSize: 16,
+            fontFamily: "Montserrat",
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
@@ -127,10 +132,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       onPressed: null,
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
+        backgroundColor:
+            MaterialStateProperty.all<Color>(const Color(0xFF120A7C)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.0),
+            borderRadius: BorderRadius.circular(8),
           ),
         ),
       ),
@@ -145,7 +151,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       // resizeToAvoidBottomInset: false,
-      backgroundColor: const Color(0xFF120A7C),
+      backgroundColor: const Color(0xFFF2F2F4),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -166,23 +172,23 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 const SizedBox(
                   height: 18,
                 ),
-                Container(
+                SizedBox(
                   width: 150,
                   height: 150,
-                  decoration: BoxDecoration(
-                    color: Colors.deepPurple.shade50,
-                    shape: BoxShape.circle,
-                    boxShadow: const [
-                      BoxShadow(color: Colors.grey, spreadRadius: 3),
-                    ],
-                  ),
+                  // decoration: BoxDecoration(
+                  // color: Colors.deepPurple.shade50,
+                  // shape: BoxShape.circle,
+                  //   boxShadow: const [
+                  //     BoxShadow(color: Colors.grey, spreadRadius: 3),
+                  //   ],
+                  // ),
                   // child: Image.asset(
                   //   'assets/images/illustration/illustration-4.png',
                   // ),
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(100),
                       child: Image.asset(
-                        'assets/images/illustration/illustration-4.png',
+                        'assets/images/icons-new/icon_password.png',
                       )),
                 ),
                 const SizedBox(
@@ -193,18 +199,20 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Color(0xFF120A7C),
+                    fontFamily: "Montserrat",
                   ),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 const Text(
-                  "Tambahkan nomor telepon Anda. Kami akan mengirimkan kode verifikasi agar kami tahu bahwa Anda asli.",
+                  "Tambahkan nomor telepon Anda.\nKami akan mengirimkan kode verifikasi agar kami tahu bahwa Anda asli.",
                   style: TextStyle(
                     fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white60,
+                    // fontWeight: FontWeight.bold,
+                    color: Color(0xFF120A7C),
+                    fontFamily: "Montserrat",
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -227,10 +235,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         keyboardType: TextInputType.number,
                         style: const TextStyle(
                           fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          // fontWeight: FontWeight.bold,
+                          fontFamily: "Montserrat",
+                          color: Color(0xFF120A7C),
                         ),
                         decoration: InputDecoration(
                           labelText: 'Nomor Telepon',
+                          labelStyle: const TextStyle(
+                            color: Color(0xFF120A7C),
+                            fontFamily: "Montserrat",
+                          ),
                           enabledBorder: OutlineInputBorder(
                               borderSide:
                                   const BorderSide(color: Colors.black12),
@@ -245,7 +259,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               '(+62)',
                               style: TextStyle(
                                 fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                                // fontWeight: FontWeight.bold,
+                                fontFamily: "Montserrat",
+                                color: Color(0xFF120A7C),
                               ),
                             ),
                           ),
@@ -255,7 +271,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         height: 20,
                       ),
                       SizedBox(
-                        width: double.infinity,
+                        width: MediaQuery.of(context).size.width / 2,
                         child:
                             currentState == MobileVerificationState.sendOTPSTATE
                                 ? loadingOTPButton()

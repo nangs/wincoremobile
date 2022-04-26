@@ -74,18 +74,22 @@ class _Register2State extends State<Register2> {
       },
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
+        backgroundColor:
+            MaterialStateProperty.all<Color>(const Color(0xFF120A7C)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.0),
+            borderRadius: BorderRadius.circular(10),
           ),
         ),
       ),
       child: const Padding(
-        padding: EdgeInsets.all(14.0),
+        padding: EdgeInsets.symmetric(horizontal: 14),
         child: Text(
           'Kirim',
-          style: TextStyle(fontSize: 16),
+          style: TextStyle(
+            fontFamily: "Montserrat",
+            fontSize: 16,
+          ),
         ),
       ),
     );
@@ -96,15 +100,16 @@ class _Register2State extends State<Register2> {
       onPressed: null,
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
+        backgroundColor:
+            MaterialStateProperty.all<Color>(const Color(0xFF120A7C)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.0),
+            borderRadius: BorderRadius.circular(10),
           ),
         ),
       ),
       child: const Padding(
-        padding: EdgeInsets.all(14.0),
+        padding: EdgeInsets.symmetric(horizontal: 14),
         child: CircularProgressIndicator.adaptive(),
       ),
     );
@@ -118,11 +123,18 @@ class _Register2State extends State<Register2> {
         backgroundColor: MaterialStateProperty.all<Color>(Colors.grey),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.0),
+            borderRadius: BorderRadius.circular(10),
           ),
         ),
       ),
-      child: const Padding(padding: EdgeInsets.all(14.0), child: Text("Kirim")),
+      child: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 14),
+          child: Text(
+            "Kirim",
+            style: TextStyle(
+              fontFamily: "Montserrat",
+            ),
+          )),
     );
   }
 
@@ -172,7 +184,12 @@ class _Register2State extends State<Register2> {
               showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
-                  content: Text(state.errorMsg),
+                  content: Text(
+                    state.errorMsg,
+                    style: const TextStyle(
+                      fontFamily: "Montserrat",
+                    ),
+                  ),
                 ),
               );
             } else if (state is RegisterLoadingState) {
@@ -183,11 +200,26 @@ class _Register2State extends State<Register2> {
                 showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
-                      title: Text("Hi, " + accname.toString()),
-                      content: const Text("Registrasi akun anda berhasil !"),
+                      title: Text(
+                        "Hi, " + accname.toString(),
+                        style: const TextStyle(
+                          fontFamily: "Montserrat",
+                        ),
+                      ),
+                      content: const Text(
+                        "Registrasi akun anda berhasil !",
+                        style: TextStyle(
+                          fontFamily: "Montserrat",
+                        ),
+                      ),
                       actions: <Widget>[
                         ElevatedButton(
-                          child: const Text('OK'),
+                          child: const Text(
+                            'OK',
+                            style: TextStyle(
+                              fontFamily: "Montserrat",
+                            ),
+                          ),
                           onPressed: () {
                             Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
@@ -223,179 +255,384 @@ class _Register2State extends State<Register2> {
                   child: Column(
                     children: [
                       const Text(
-                        "Masukan data pribadi anda",
+                        "Masukan Data Pribadi Anda",
                         style: TextStyle(
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
                           color: Colors.white,
                         ),
                       ),
-                      TextField(
-                        controller: _dobController,
-                        style: const TextStyle(
-                          // fontSize: 18.0,
-                          color: Colors.white,
-                        ),
-                        decoration: InputDecoration(
-                          hintText: 'YYYY / MM / DD',
-                          hintStyle: const TextStyle(color: Colors.blueGrey),
-                          suffixIcon: IconButton(
-                            onPressed: _pickDateDialog,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        child: Container(
+                          decoration: BoxDecoration(
                             color: Colors.white,
-                            icon: const Icon(Icons.date_range),
+                            borderRadius: BorderRadius.circular(12),
                           ),
-                          labelText: 'Tanggal Lahir',
-                          labelStyle: const TextStyle(color: Colors.blueAccent),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15),
+                            child: Column(
+                              children: [
+                                TextField(
+                                  controller: _dobController,
+                                  style: const TextStyle(
+                                    fontFamily: "Montserrat",
+                                    // fontSize: 18.0,
+                                    color: Color(0xFF120A7C),
+                                  ),
+                                  decoration: InputDecoration(
+                                    hintText: 'YYYY / MM / DD',
+                                    hintStyle: const TextStyle(
+                                        fontFamily: "Montserrat",
+                                        color: Colors.blueGrey),
+                                    suffixIcon: IconButton(
+                                      onPressed: _pickDateDialog,
+                                      color: Colors.blueGrey,
+                                      icon: const Icon(Icons.date_range),
+                                    ),
+                                    labelText: 'Tanggal Lahir',
+                                    labelStyle: const TextStyle(
+                                      fontFamily: "Montserrat",
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFF120A7C),
+                                    ),
+                                    counter: const Offstage(),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                            width: 2, color: Colors.black12),
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                          width: 2,
+                                          color: Color(0xFF120A7C),
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
+                                  ),
+                                  readOnly: true,
+                                ),
+                                TextField(
+                                  style: const TextStyle(
+                                    fontFamily: "Montserrat",
+                                    // fontSize: 18.0,
+                                    color: Color(0xFF120A7C),
+                                  ),
+                                  controller: _noKtpController,
+                                  decoration: InputDecoration(
+                                    labelText: 'Nomor Identitas',
+                                    labelStyle: const TextStyle(
+                                      fontFamily: "Montserrat",
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFF120A7C),
+                                    ),
+                                    counter: const Offstage(),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                            width: 2, color: Colors.black12),
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                          width: 2,
+                                          color: Color(0xFF120A7C),
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
+                                  ),
+                                  keyboardType: TextInputType.number,
+                                  inputFormatters: [
+                                    FilteringTextInputFormatter.allow(
+                                        RegExp('[0-9]'))
+                                  ],
+                                ),
+                                TextField(
+                                  style: const TextStyle(
+                                    fontFamily: "Montserrat",
+                                    // fontSize: 18.0,
+                                    color: Color(0xFF120A7C),
+                                  ),
+                                  controller: _noRekController,
+                                  decoration: InputDecoration(
+                                    labelText: 'Nomor Rekening',
+                                    labelStyle: const TextStyle(
+                                      fontFamily: "Montserrat",
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFF120A7C),
+                                    ),
+                                    counter: const Offstage(),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                            width: 2, color: Colors.black12),
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                          width: 2,
+                                          color: Color(0xFF120A7C),
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
+                                  ),
+                                  keyboardType: TextInputType.number,
+                                  inputFormatters: [
+                                    FilteringTextInputFormatter.allow(
+                                        RegExp('[0-9]'))
+                                  ],
+                                ),
+                                TextField(
+                                  style: const TextStyle(
+                                    fontFamily: "Montserrat",
+                                    // fontSize: 18.0,
+                                    color: Color(0xFF120A7C),
+                                  ),
+                                  controller: _userIdController,
+                                  decoration: InputDecoration(
+                                    labelText: 'User ID',
+                                    labelStyle: const TextStyle(
+                                      fontFamily: "Montserrat",
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFF120A7C),
+                                    ),
+                                    counter: const Offstage(),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                            width: 2, color: Colors.black12),
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                          width: 2,
+                                          color: Color(0xFF120A7C),
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
+                                  ),
+                                  keyboardType: TextInputType.text,
+                                  inputFormatters: [
+                                    FilteringTextInputFormatter
+                                        .singleLineFormatter
+                                  ],
+                                ),
+                                TextField(
+                                  style: const TextStyle(
+                                    fontFamily: "Montserrat",
+                                    // fontSize: 18.0,
+                                    color: Color(0xFF120A7C),
+                                  ),
+                                  controller: _passController,
+                                  decoration: InputDecoration(
+                                    labelText: 'Kata Sandi',
+                                    labelStyle: const TextStyle(
+                                      fontFamily: "Montserrat",
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFF120A7C),
+                                    ),
+                                    counter: const Offstage(),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                            width: 2, color: Colors.black12),
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                          width: 2,
+                                          color: Color(0xFF120A7C),
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
+                                  ),
+                                  keyboardType: TextInputType.visiblePassword,
+                                  inputFormatters: [
+                                    FilteringTextInputFormatter
+                                        .singleLineFormatter
+                                  ],
+                                  onChanged: (context) {
+                                    if (_passController.text !=
+                                        _passConfController.text) {
+                                      setState(() {
+                                        currentPasswordState =
+                                            ValidationPasswordState
+                                                .diffPasswordWithConfirm;
+                                      });
+                                    } else {
+                                      setState(() {
+                                        currentPasswordState =
+                                            ValidationPasswordState
+                                                .samePasswordWithConfirm;
+                                      });
+                                    }
+                                  },
+                                ),
+                                TextField(
+                                  style: const TextStyle(
+                                    fontFamily: "Montserrat",
+                                    // fontSize: 18.0,
+                                    color: Color(0xFF120A7C),
+                                  ),
+                                  controller: _passConfController,
+                                  decoration: InputDecoration(
+                                    labelText: 'Ketikan Ulang Kata Sandi',
+                                    labelStyle: const TextStyle(
+                                      fontFamily: "Montserrat",
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFF120A7C),
+                                    ),
+                                    counter: const Offstage(),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                            width: 2, color: Colors.black12),
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                          width: 2,
+                                          color: Color(0xFF120A7C),
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
+                                  ),
+                                  keyboardType: TextInputType.visiblePassword,
+                                  inputFormatters: [
+                                    FilteringTextInputFormatter
+                                        .singleLineFormatter
+                                  ],
+                                  onChanged: (context) {
+                                    if (_passController.text !=
+                                        _passConfController.text) {
+                                      setState(() {
+                                        currentPasswordState =
+                                            ValidationPasswordState
+                                                .diffPasswordWithConfirm;
+                                      });
+                                    } else {
+                                      setState(() {
+                                        currentPasswordState =
+                                            ValidationPasswordState
+                                                .samePasswordWithConfirm;
+                                      });
+                                    }
+                                  },
+                                ),
+                                TextField(
+                                  style: const TextStyle(
+                                    fontFamily: "Montserrat",
+                                    // fontSize: 18.0,
+                                    color: Color(0xFF120A7C),
+                                  ),
+                                  controller: _mpinController,
+                                  decoration: InputDecoration(
+                                    labelText: 'M-PIN',
+                                    labelStyle: const TextStyle(
+                                      fontFamily: "Montserrat",
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFF120A7C),
+                                    ),
+                                    counter: const Offstage(),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                            width: 2, color: Colors.black12),
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                          width: 2,
+                                          color: Color(0xFF120A7C),
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
+                                  ),
+                                  keyboardType: TextInputType.number,
+                                  inputFormatters: [
+                                    LengthLimitingTextInputFormatter(6),
+                                    FilteringTextInputFormatter.allow(
+                                        RegExp('[0-9]'))
+                                  ],
+                                  obscureText: true,
+                                  onChanged: (context) {
+                                    if (_mpinController.text !=
+                                        _mpinConfController.text) {
+                                      setState(() {
+                                        currentMPINState = ValidationMPINState
+                                            .diffMPINWithConfirm;
+                                      });
+                                    } else {
+                                      setState(() {
+                                        currentMPINState = ValidationMPINState
+                                            .sameMPINWithConfirm;
+                                      });
+                                    }
+                                  },
+                                ),
+                                TextField(
+                                  style: const TextStyle(
+                                    fontFamily: "Montserrat",
+                                    // fontSize: 18.0,
+                                    color: Color(0xFF120A7C),
+                                  ),
+                                  controller: _mpinConfController,
+                                  decoration: InputDecoration(
+                                    labelText: 'Ketikan Ulang M-PIN',
+                                    labelStyle: const TextStyle(
+                                      fontFamily: "Montserrat",
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFF120A7C),
+                                    ),
+                                    counter: const Offstage(),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                            width: 2, color: Colors.black12),
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                          width: 2,
+                                          color: Color(0xFF120A7C),
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
+                                  ),
+                                  keyboardType: TextInputType.number,
+                                  inputFormatters: [
+                                    LengthLimitingTextInputFormatter(6),
+                                    FilteringTextInputFormatter.allow(
+                                        RegExp('[0-9]'))
+                                  ],
+                                  obscureText: true,
+                                  onChanged: (context) {
+                                    if (_mpinController.text !=
+                                        _mpinConfController.text) {
+                                      setState(() {
+                                        currentMPINState = ValidationMPINState
+                                            .diffMPINWithConfirm;
+                                      });
+                                    } else {
+                                      setState(() {
+                                        currentMPINState = ValidationMPINState
+                                            .sameMPINWithConfirm;
+                                      });
+                                    }
+                                  },
+                                ),
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width / 1.9,
+                                  child: (currentPasswordState ==
+                                              ValidationPasswordState
+                                                  .samePasswordWithConfirm &&
+                                          currentMPINState ==
+                                              ValidationMPINState
+                                                  .sameMPINWithConfirm)
+                                      ? registerButton(context)
+                                      : disabledButton(),
+                                  // child: registerButton(context),
+                                )
+                              ],
+                            ),
+                          ),
                         ),
-                        readOnly: true,
                       ),
-                      TextField(
-                        style: const TextStyle(
-                          // fontSize: 18.0,
-                          color: Colors.white,
-                        ),
-                        controller: _noKtpController,
-                        decoration: const InputDecoration(
-                          labelText: 'Nomor Identitas',
-                          labelStyle: TextStyle(color: Colors.blueAccent),
-                        ),
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.allow(RegExp('[0-9]'))
-                        ],
-                      ),
-                      TextField(
-                        style: const TextStyle(
-                          // fontSize: 18.0,
-                          color: Colors.white,
-                        ),
-                        controller: _noRekController,
-                        decoration: const InputDecoration(
-                          labelText: 'Nomor Rekening',
-                          labelStyle: TextStyle(color: Colors.blueAccent),
-                        ),
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.allow(RegExp('[0-9]'))
-                        ],
-                      ),
-                      TextField(
-                        style: const TextStyle(
-                          // fontSize: 18.0,
-                          color: Colors.white,
-                        ),
-                        controller: _userIdController,
-                        decoration: const InputDecoration(
-                          labelText: 'Nama Pengguna',
-                          labelStyle: TextStyle(color: Colors.blueAccent),
-                        ),
-                        keyboardType: TextInputType.text,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.singleLineFormatter
-                        ],
-                      ),
-                      TextField(
-                        style: const TextStyle(
-                          // fontSize: 18.0,
-                          color: Colors.white,
-                        ),
-                        controller: _passController,
-                        decoration: const InputDecoration(
-                          labelText: 'Kata Sandi',
-                          labelStyle: TextStyle(color: Colors.blueAccent),
-                        ),
-                        keyboardType: TextInputType.visiblePassword,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.singleLineFormatter
-                        ],
-                      ),
-                      TextField(
-                        style: const TextStyle(
-                          // fontSize: 18.0,
-                          color: Colors.white,
-                        ),
-                        controller: _passConfController,
-                        decoration: const InputDecoration(
-                          labelText: 'Ketikan Ulang Kata Sandi',
-                          labelStyle: TextStyle(color: Colors.blueAccent),
-                        ),
-                        keyboardType: TextInputType.visiblePassword,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.singleLineFormatter
-                        ],
-                        onChanged: (context) {
-                          if (_passController.text !=
-                              _passConfController.text) {
-                            setState(() {
-                              currentPasswordState = ValidationPasswordState
-                                  .diffPasswordWithConfirm;
-                            });
-                          } else {
-                            setState(() {
-                              currentPasswordState = ValidationPasswordState
-                                  .samePasswordWithConfirm;
-                            });
-                          }
-                        },
-                      ),
-                      TextField(
-                        style: const TextStyle(
-                          // fontSize: 18.0,
-                          color: Colors.white,
-                        ),
-                        controller: _mpinController,
-                        decoration: const InputDecoration(
-                          labelText: 'M-PIN',
-                          labelStyle: TextStyle(color: Colors.blueAccent),
-                        ),
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          LengthLimitingTextInputFormatter(6),
-                          FilteringTextInputFormatter.allow(RegExp('[0-9]'))
-                        ],
-                      ),
-                      TextField(
-                        style: const TextStyle(
-                          // fontSize: 18.0,
-                          color: Colors.white,
-                        ),
-                        controller: _mpinConfController,
-                        decoration: const InputDecoration(
-                          labelText: 'Ketikan Ulang M-PIN',
-                          labelStyle: TextStyle(color: Colors.blueAccent),
-                        ),
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          LengthLimitingTextInputFormatter(6),
-                          FilteringTextInputFormatter.allow(RegExp('[0-9]'))
-                        ],
-                        onChanged: (context) {
-                          if (_mpinController.text !=
-                              _mpinConfController.text) {
-                            setState(() {
-                              currentMPINState =
-                                  ValidationMPINState.diffMPINWithConfirm;
-                            });
-                          } else {
-                            setState(() {
-                              currentMPINState =
-                                  ValidationMPINState.sameMPINWithConfirm;
-                            });
-                          }
-                        },
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: (currentPasswordState ==
-                                    ValidationPasswordState
-                                        .samePasswordWithConfirm &&
-                                currentMPINState ==
-                                    ValidationMPINState.sameMPINWithConfirm)
-                            ? registerButton(context)
-                            : disabledButton(),
-                        // child: registerButton(context),
-                      )
                     ],
                   ),
                 ),

@@ -21,19 +21,25 @@ class AuthResponse {
 }
 
 class Info {
+  String? lastLogin;
   String? accountName;
+  String? custNo;
   List<String>? accountList;
 
-  Info({this.accountName, this.accountList});
+  Info({this.lastLogin, this.accountName, this.custNo, this.accountList});
 
   Info.fromJson(Map<String, dynamic> json) {
+    lastLogin = json['last_login'];
     accountName = json['account_name'];
+    custNo = json['cust_no'];
     accountList = json['account_list'].cast<String>();
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['last_login'] = this.lastLogin;
     data['account_name'] = this.accountName;
+    data['cust_no'] = this.custNo;
     data['account_list'] = this.accountList;
     return data;
   }
